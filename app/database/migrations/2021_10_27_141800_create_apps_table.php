@@ -15,8 +15,9 @@ class CreateAppsTable extends Migration
     {
         Schema::create('apps', function (Blueprint $table) {
             $table->id();
-            $table->text('link')->unique('link');
+            $table->text('link');
             $table->timestamps();
+            $table->unique('link', 'link_index(1000)');
         });
     }
 
