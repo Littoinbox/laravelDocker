@@ -23,7 +23,7 @@ class CreateWatchListsTable extends Migration
     {
         Schema::create('watch_lists', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable(false);
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->string('title')->nullable(false);
             $table->integer('active')->default('1');
             $table->text('list');
