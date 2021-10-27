@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/test/ajax', [\App\Http\Controllers\TestController::class, 'ajax']);
+Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
