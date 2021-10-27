@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\List;
+namespace App\Models\Lists;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WatchLists extends Model
+class ListToApp extends Model
 {
     use HasFactory;
 }
