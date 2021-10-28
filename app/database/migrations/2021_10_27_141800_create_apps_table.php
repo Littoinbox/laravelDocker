@@ -17,7 +17,7 @@ class CreateAppsTable extends Migration
             $table->id();
             $table->text('link');
             $table->timestamps();
-            $table->unique('link', 'link_index(1000)');
+            //$table->unique('link', 'link(500)');
         });
     }
 
