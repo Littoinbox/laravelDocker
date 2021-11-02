@@ -13,5 +13,5 @@ class ParserPage extends Model
     abstract function parse_brand($url);
 
 
- 
+
 }
