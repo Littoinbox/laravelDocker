@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+//window.Vue = require('vue').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,7 +29,7 @@ Vue.component('test-component', require('./components/TestComponents.vue').defau
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+/*const app = new Vue({
     el: '#app',
 });
-
+*/
