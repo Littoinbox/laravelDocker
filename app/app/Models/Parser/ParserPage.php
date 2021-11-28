@@ -12,6 +12,8 @@ class ParserPage extends Model
     abstract function parse_page($url);
     abstract function parse_brand($url);
 
+    public function parseAllapp(){
 
+    }
 
 }
