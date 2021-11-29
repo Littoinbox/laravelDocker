@@ -2092,6 +2092,11 @@ Vue.component('test-component', require('./components/TestComponents.vue').defau
 });
 */
 
+
+__webpack_require__(/*! ./verification/watchlist.js */ "./resources/js/verification/watchlist.js");
+
+__webpack_require__(/*! ./events/click.js */ "./resources/js/events/click.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2135,6 +2140,39 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/events/click.js":
+/*!**************************************!*\
+  !*** ./resources/js/events/click.js ***!
+  \**************************************/
+/***/ (() => {
+
+(function ($) {
+  //добавление новой строки в списке добавляемых ссылок на сканирование
+  $(document).on('click', '.addLinks', function () {
+    var html = "<label>Ссылка на товар либо бренд</label>\n" + "                        <input type=\"text\" name=\"link[]\">\n";
+    $(this).parent().prev().append(html);
+  });
+  $(document).on('click', '.saveWatchList', function () {
+    var data = $('form[name=addwatchlist]').serialize();
+    watchListVerification(data);
+    return false;
+  });
+})(jQuery);
+
+/***/ }),
+
+/***/ "./resources/js/verification/watchlist.js":
+/*!************************************************!*\
+  !*** ./resources/js/verification/watchlist.js ***!
+  \************************************************/
+/***/ (() => {
+
+function watchListVerification(data) {
+  console.log(data);
+}
 
 /***/ }),
 

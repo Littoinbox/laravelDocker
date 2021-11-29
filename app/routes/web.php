@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/dashboard', [\App\Http\Controllers\Main\DashboardController::class, 'index'])->name('dashboard');
+Route::post('/dashboard', [\App\Http\Controllers\Main\DashboardController::class, 'index'])->name('dashboard2');
+Route::get('/home', function(){redirect(route('dashboard'));})->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/test/ajax', [\App\Http\Controllers\TestController::class, 'ajax']);
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
