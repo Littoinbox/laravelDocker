@@ -9,12 +9,12 @@ class OzonParser extends ParserPage
 {
     use HasFactory;
 
-    function parse_page($url)
+    function parse_page($url, $id)
     {
         // TODO: Implement parse_page() method.
     }
 
-    function parse_brand($url)
+    function parse_brand($url, $id)
     {
         // TODO: Implement parse_brand() method.
     }

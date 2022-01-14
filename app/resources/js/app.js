@@ -33,7 +33,7 @@ Vue.component('test-component', require('./components/TestComponents.vue').defau
     el: '#app',
 });
 */
-require('./verification/watchlist.js');
+
 require('./events/click.js');
 
 

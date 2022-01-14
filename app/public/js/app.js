@@ -2093,8 +2093,6 @@ Vue.component('test-component', require('./components/TestComponents.vue').defau
 */
 
 
-__webpack_require__(/*! ./verification/watchlist.js */ "./resources/js/verification/watchlist.js");
-
 __webpack_require__(/*! ./events/click.js */ "./resources/js/events/click.js");
 
 /***/ }),
@@ -2152,27 +2150,51 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 (function ($) {
   //добавление новой строки в списке добавляемых ссылок на сканирование
   $(document).on('click', '.addLinks', function () {
-    var html = "<label>Ссылка на товар либо бренд</label>\n" + "                        <input type=\"text\" name=\"link[]\">\n";
+    var html = "<label>Ссылка на товар либо бренд</label>\n" + "                        <input type=\"text\" class='watchListLink' name=\"link[]\">\n";
     $(this).parent().prev().append(html);
   });
-  $(document).on('click', '.saveWatchList', function () {
-    var data = $('form[name=addwatchlist]').serialize();
-    watchListVerification(data);
-    return false;
+  $(document).on('blur', '.watchListLink', function () {
+    var val = $(this).val();
+    validateLink(val, $(this));
   });
+  $(document).on('click', '.saveWatchList', function () {
+    var is_valid = true;
+    $('.watchListLink').each(function () {
+      if ($(this).hasClass('notValid')) {
+        is_valid = false;
+      }
+    });
+
+    if (is_valid) {
+      $.ajax({
+        url: '/ajax/addList',
+        type: 'post',
+        data: $('form[name=addwatchlist]').serialize(),
+        success: function success(result) {
+          console.log(result);
+        }
+      });
+    } else {
+      alert("Неправильно заполнены все поля!");
+      return false;
+    }
+  });
+
+  function validateLink(val, el) {
+    el.removeClass('valid');
+    el.removeClass('notValid');
+
+    if (val.length <= 0) {
+      return true;
+    } else if (/wildberries\.ru/.test(val) || /ozon\.ru/.test(val)) {
+      el.addClass('valid');
+      return true;
+    } else {
+      el.addClass('notValid');
+      return false;
+    }
+  }
 })(jQuery);
-
-/***/ }),
-
-/***/ "./resources/js/verification/watchlist.js":
-/*!************************************************!*\
-  !*** ./resources/js/verification/watchlist.js ***!
-  \************************************************/
-/***/ (() => {
-
-function watchListVerification(data) {
-  console.log(data);
-}
 
 /***/ }),
 

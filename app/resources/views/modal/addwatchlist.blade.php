@@ -10,12 +10,12 @@
                     @csrf
                     <div class="form-group">
                         <label>Название списка отслеживания</label>
-                        <input type="text" name="title" required>
+                        <input type="text" id="watchListName" name="title" required>
                     </div>
 
                     <div class="form-group">
                         <label>Ссылка на товар либо бренд</label>
-                        <input type="text" name="link[]">
+                        <input type="text" class="watchListLink" name="link[]">
                     </div>
 
                     <div class="form-group">

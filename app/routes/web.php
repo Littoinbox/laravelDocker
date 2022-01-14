@@ -18,10 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/dashboard', [\App\Http\Controllers\Main\DashboardController::class, 'index'])->name('dashboard');
-Route::post('/dashboard', [\App\Http\Controllers\Main\DashboardController::class, 'index'])->name('dashboard2');
-Route::get('/home', function(){redirect(route('dashboard'));})->name('home');
+Route::get('/dashboard', [\App\Http\Controllers\Main\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::get('/home', function(){ redirect(route('dashboard'));});
 
 
-Route::get('/test/ajax', [\App\Http\Controllers\TestController::class, 'ajax']);
+Route::post('/test/ajax', [\App\Http\Controllers\TestController::class, 'ajax']);
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'index']);
+
+Route::post('/ajax/addList', [\App\Http\Controllers\Ajax\JobControllers::class, 'addList']);

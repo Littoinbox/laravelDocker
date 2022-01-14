@@ -9,12 +9,12 @@ class WbParser extends ParserPage
 {
     use HasFactory;
 
-    public function parse_page($url)
+    public function parse_page($url, $id)
     {
 
     }
 
-    function parse_brand($url)
+    function parse_brand($url, $id)
     {
         // TODO: Implement parse_brand() method.
     }
