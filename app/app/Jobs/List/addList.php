@@ -41,7 +41,8 @@ class addList implements ShouldQueue
             {
                 if (preg_match('/\/brands\//', $link[0]))
                 {
-                    WbParser::parse_brand($lists[0], $this->id);
+                    $list = WbParser::parse_brand($lists[0], $this->id);
+                    $sortList = WbParser::findNewItem($list);
                 }
             }
         }

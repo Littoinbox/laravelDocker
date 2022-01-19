@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parser\WbParser;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     //
     function index(){
-        $url_data = [
-            array(
-                'title' =>'Тут какой-то адрес',
-                'url' => 'http://ya.ru'
-            ),
-            array(
-                'title' =>'Тут какой-то адрес 2',
-                'url' => 'http://yandex.ru'
-            )
-        ];
-        return view('test', ['url_data'=>$url_data]);
+        $a = WbParser::parse_brand('https://www.wildberries.ru/brands/podarok52-112777', 1);
+        //$a = WbParser::parse_brand('https://www.ten-prom.ru/', 1);
+        $sort = WbParser::findNewItem($a);
+        echo "<pre>";
+        print_R($sort);
+        echo "</pre>";
+
     }
     function ajax (Request $request){
        $a = $request->link;

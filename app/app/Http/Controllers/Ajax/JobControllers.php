@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\List\addList;
 use App\Models\Lists\WatchLists;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,9 @@ class JobControllers extends Controller
         $watchList = WatchLists::create($data);
         if (!emptyArray($watchList->id))
         {
+            App\Jobs\List\addList::dispatch($watchList->id);
+
+
 
         }
 
